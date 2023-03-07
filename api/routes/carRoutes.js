@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { marca, modelo, ano } = req.body
+    const { ano, marca, modelo } = req.body
 
     const car = {
         marca, modelo, ano
