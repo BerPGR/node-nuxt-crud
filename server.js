@@ -15,10 +15,7 @@ app.use(express.json())
 
 app.use('/cars', carRoutes)
 
-mongoose.connect(`mongodb+srv://be_polaco:nkQUHGSonci5T807@cruds.ubw12ps.mongodb.net/db1?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    })
+mongoose.connect(`mongodb+srv://be_polaco:nkQUHGSonci5T807@cruds.ubw12ps.mongodb.net/db1?retryWrites=true&w=majority`)
 .then(async() => {
     const nuxt = await loadNuxt(isDev ? 'dev' : 'start')
 
