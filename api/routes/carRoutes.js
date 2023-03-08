@@ -28,5 +28,15 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id
+
+    try {
+        await Car.deleteOne({_id: id})
+    } catch(e) {
+        console.log(e)
+    }
+})
+
 
 module.exports = router;

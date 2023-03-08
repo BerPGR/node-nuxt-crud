@@ -20,7 +20,7 @@
                     </v-card-actions>
                 </v-card>
             </v-dialog>
-            <v-card color="white" rounded>
+            <v-card rounded>
                 <v-app-bar>
                     <v-list-item-title class="text-black" v-if="cars.length == 0">
                         Nao há carros no banco!
@@ -49,7 +49,7 @@
                                 mdi-pencil
                             </v-icon>
                         </v-btn>
-                        <v-btn icon @click="deletaCarro(car[i])">
+                        <v-btn icon @click="deletaCarro(cars[i])">
                             <v-icon color="red">mdi-delete</v-icon>
                         </v-btn>
                     </v-list-item>
@@ -74,15 +74,14 @@ export default {
     },
     methods: {
         async salvarCarro() {
+            this.dialog = !this.dialog
             const carro = {ano: parseInt(this.ano), marca: this.marca, modelo: this.modelo}
             await this.$axios.post("/cars", carro)
-            this.fetch()
-            this.dialog = await !this.dialog
         },
 
         async deletaCarro(carro) {
-
-        }
+            await this.$axios.delete(`cars/${carro._id}`, carro)
+        },
     }
 }
 </script>
